@@ -9,8 +9,6 @@ import UIKit
 
 class LiteViewController: UIViewController {
 
-    private var backImage = UIImage(named: "Tournament")
-
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +21,34 @@ class LiteViewController: UIViewController {
     //MARK: - Clousers
     private lazy var backView: UIImageView = {
         let view = UIImageView()
-        view.image = self.backImage
+        view.image = BackImage.backImage
         view.alpha = 0.3
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+
+    private lazy var addPlayerButton: UIButton = {
+        let button = UIButton()
+        button.configuration = .filled()
+        button.configuration?.baseBackgroundColor = .systemOrange
+        button.titleLabel?.textAlignment = .center
+        button.layer.cornerRadius = 30
+        button.clipsToBounds = true
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(addPlayer), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var plusLabel: UILabel = {
+        let label = UILabel()
+        label.text = "+"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 30)
+        label.textAlignment = .center
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     //MARK: - Methods
@@ -46,17 +68,31 @@ class LiteViewController: UIViewController {
         tabBarController?.tabBar.scrollEdgeAppearance = tabAppearance
     }
 
+    private func addSubviews() {
+        [backView, addPlayerButton].forEach { view.addSubview($0) }
+        addPlayerButton.addSubview(plusLabel)
+    }
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
             backView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             backView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             backView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            backView.heightAnchor.constraint(equalTo: view.widthAnchor)
+            backView.heightAnchor.constraint(equalTo: view.widthAnchor),
+
+            addPlayerButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            addPlayerButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
+            addPlayerButton.heightAnchor.constraint(equalToConstant: 60),
+            addPlayerButton.widthAnchor.constraint(equalToConstant: 60),
+
+            plusLabel.centerXAnchor.constraint(equalTo: addPlayerButton.centerXAnchor),
+            plusLabel.centerYAnchor.constraint(equalTo: addPlayerButton.centerYAnchor, constant: -1.5),
         ])
     }
 
-    private func addSubviews() {
-        view.addSubview(backView)
+    @objc func addPlayer() {
+        let vc = ListOfPlayersTableViewController()
+        vc.navigationItem.title = "List of players Lite league"
+        navigationController?.pushViewController(vc, animated: true)
     }
-
 }

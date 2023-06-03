@@ -20,8 +20,11 @@ final class PreloadViewController: UIViewController {
 
         progressView.progress = 0.0
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+        DispatchQueue.main.asyncAfter(deadline: .now()) { // + 0.5
+            self.progressLabel.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now()) { // + 1
+                self.timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+            }
         }
     }
 
@@ -50,6 +53,7 @@ final class PreloadViewController: UIViewController {
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 16)
         label.text = "Идёт загрузка хорошего настроения: 0%"
+        label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -86,7 +90,7 @@ final class PreloadViewController: UIViewController {
             timer?.invalidate()
             timer = nil
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now()) { // + 1
                 self.navigationController?.pushViewController(self.createTabBarController(), animated: true)
             }
         }

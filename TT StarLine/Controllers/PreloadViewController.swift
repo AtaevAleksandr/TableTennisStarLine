@@ -76,6 +76,7 @@ final class PreloadViewController: UIViewController {
     private lazy var shadowTextView: UIView = {
         let container = UIView()
         container.backgroundColor = .clear
+        container.alpha = 0.8
         container.layer.cornerRadius = 10
         container.layer.shadowColor = UIColor.black.cgColor
         container.layer.shadowOffset = CGSize(width: -8, height: 8)

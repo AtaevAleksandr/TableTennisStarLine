@@ -22,7 +22,7 @@ class HardLeagueViewController: UIViewController {
     private lazy var backView: UIImageView = {
         let view = UIImageView()
         view.image = BackImage.backImage
-        view.alpha = 0.3
+        view.alpha = 0.1
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -61,6 +61,7 @@ class HardLeagueViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.prefersLargeTitles = true
 
         let tabAppearance = UITabBarAppearance()
         tabAppearance.backgroundColor = .systemGray5

@@ -15,19 +15,12 @@ final class PreloadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadProgress()
         addSubviews()
         setConstraints()
-
-        progressView.progress = 0.0
-
-        DispatchQueue.main.asyncAfter(deadline: .now()) { // + 0.5
-            self.progressLabel.isHidden = false
-            DispatchQueue.main.asyncAfter(deadline: .now()) { // + 1
-                self.timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
-            }
-        }
     }
 
+    //MARK: - Clousers
     private lazy var backView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
@@ -36,14 +29,24 @@ final class PreloadViewController: UIViewController {
         return view
     }()
 
+    private lazy var shadowProgressView: UIView = {
+        let container = UIView()
+        container.backgroundColor = .clear
+        container.layer.cornerRadius = 10
+        container.layer.shadowColor = UIColor.black.cgColor
+        container.layer.shadowOffset = CGSize(width: -8, height: 8)
+        container.layer.shadowRadius = 4
+        container.layer.shadowOpacity = 0.6
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return container
+    }()
+
     private lazy var progressView: UIProgressView = {
         let view = UIProgressView(progressViewStyle: .bar)
-        view.backgroundColor = .gray
+        view.backgroundColor = .systemGray2
         view.progressTintColor = .systemOrange
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: -8, height: 8)
-        view.layer.shadowRadius = 4
-        view.layer.shadowOpacity = 0.8
+        view.layer.cornerRadius = 10
+        view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -58,12 +61,87 @@ final class PreloadViewController: UIViewController {
         return label
     }()
 
+    private lazy var rulesLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Регламент"
+        label.textColor = .black
+        label.font = .boldSystemFont(ofSize: 30)
+        label.textAlignment = .center
+        label.sizeToFit()
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private lazy var shadowTextView: UIView = {
+        let container = UIView()
+        container.backgroundColor = .clear
+        container.layer.cornerRadius = 10
+        container.layer.shadowColor = UIColor.black.cgColor
+        container.layer.shadowOffset = CGSize(width: -8, height: 8)
+        container.layer.shadowRadius = 4
+        container.layer.shadowOpacity = 0.6
+        container.isHidden = true
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return container
+    }()
+
+    private lazy var rulesTextView: UITextView = {
+        let textView = UITextView()
+        textView.backgroundColor = .white
+        textView.isEditable = false
+        textView.textColor = .black
+        textView.font = .systemFont(ofSize: 18)
+        textView.layer.cornerRadius = 10
+        textView.textAlignment = .center
+        textView.isHidden = true
+        textView.layer.shadowColor = UIColor.black.cgColor
+        textView.layer.shadowOffset = CGSize(width: -8, height: 8)
+        textView.layer.shadowRadius = 4
+        textView.layer.shadowOpacity = 0.8
+        textView.text = Rules.rules
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+
+    private lazy var acceptButton: UIButton = {
+        let button = UIButton()
+        button.configuration = .filled()
+        button.configuration?.cornerStyle = .large
+        button.configuration?.title = "Понял, принял!"
+        button.configuration?.attributedTitle?.font = .systemFont(ofSize: 20)
+        button.isHidden = true
+        button.configuration?.baseBackgroundColor = .systemOrange
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: -8, height: 8)
+        button.layer.shadowRadius = 4
+        button.layer.shadowOpacity = 0.6
+        button.addTarget(self, action: #selector(goToLeagueVC), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    //MARK: - Methods
+    private func addSubviews() {
+        [backView, rulesLabel, shadowTextView, acceptButton].forEach { view.addSubview($0) }
+        shadowTextView.addSubview(rulesTextView)
+        backView.addSubview(shadowProgressView)
+        shadowProgressView.addSubview(progressView)
+        progressView.addSubview(progressLabel)
+    }
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
             backView.topAnchor.constraint(equalTo: view.topAnchor),
             backView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 2),
             backView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            shadowProgressView.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
+            shadowProgressView.centerYAnchor.constraint(equalTo: backView.centerYAnchor),
+            shadowProgressView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
+            shadowProgressView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20),
+            shadowProgressView.heightAnchor.constraint(equalToConstant: 25),
 
             progressView.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
             progressView.centerYAnchor.constraint(equalTo: backView.centerYAnchor),
@@ -74,13 +152,34 @@ final class PreloadViewController: UIViewController {
             progressLabel.centerXAnchor.constraint(equalTo: progressView.centerXAnchor),
             progressLabel.centerYAnchor.constraint(equalTo: progressView.centerYAnchor),
 
+            rulesLabel.bottomAnchor.constraint(equalTo: shadowTextView.topAnchor, constant: -10),
+            rulesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+            shadowTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            shadowTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            shadowTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            shadowTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
+
+            rulesTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            rulesTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            rulesTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            rulesTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
+
+            acceptButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            acceptButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            acceptButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 
-    private func addSubviews() {
-        view.addSubview(backView)
-        backView.addSubview(progressView)
-        progressView.addSubview(progressLabel)
+    private func loadProgress() {
+        progressView.progress = 0.0
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.progressLabel.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.timer = Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+            }
+        }
     }
 
     @objc private func updateTimer() {
@@ -90,11 +189,19 @@ final class PreloadViewController: UIViewController {
             timer?.invalidate()
             timer = nil
 
-            DispatchQueue.main.asyncAfter(deadline: .now()) { // + 1
-                self.navigationController?.pushViewController(self.createTabBarController(), animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.progressView.isHidden = true
+                self.rulesLabel.isHidden = false
+                self.shadowTextView.isHidden = false
+                self.rulesTextView.isHidden = false
+                self.acceptButton.isHidden = false
             }
         }
         updateProgress(progress)
+    }
+
+    @objc private func goToLeagueVC() {
+        navigationController?.pushViewController(self.createTabBarController(), animated: true)
     }
 
     func updateProgress(_ progress: Float) {

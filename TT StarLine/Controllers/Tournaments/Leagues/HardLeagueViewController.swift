@@ -1,5 +1,5 @@
 //
-//  HardViewController.swift
+//  HardLeagueViewController.swift
 //  TT StarLine
 //
 //  Created by Aleksandr Ataev on 02.06.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HardViewController: UIViewController {
+class HardLeagueViewController: UIViewController {
 
     //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class HardViewController: UIViewController {
 
     //MARK: - Methods
     private func createNavBarItems() {
-        navigationItem.title = "Hard League"
+        navigationItem.title = "Hard лига"
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .white
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
@@ -91,7 +91,7 @@ class HardViewController: UIViewController {
     }
 
     @objc func addPlayer() {
-        let vc = ListOfPlayersTableViewController()
+        let vc = ListOfPlayersViewController()
         vc.navigationItem.title = "List of players Hard league"
         navigationController?.pushViewController(vc, animated: true)
     }

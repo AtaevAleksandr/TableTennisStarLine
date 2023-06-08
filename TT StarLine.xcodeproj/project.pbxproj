@@ -7,36 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0D6EB02A2D3B5000C129E0 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */; };
+		5BA59CCF2A31D33B00E567C3 /* RaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59CCE2A31D33B00E567C3 /* RaitingViewController.swift */; };
+		5BA59CD12A31D3C100E567C3 /* TournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */; };
 		5BCB80E72A2BE48000F37023 /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80E62A2BE48000F37023 /* Players.swift */; };
-		5BCB80EB2A2BEB2900F37023 /* ListOfPlayersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EA2A2BEB2900F37023 /* ListOfPlayersTableViewController.swift */; };
+		5BCB80EB2A2BEB2900F37023 /* ListOfPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */; };
 		5BCB80ED2A2BF6F900F37023 /* Extension + UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EC2A2BF6F900F37023 /* Extension + UIImage.swift */; };
 		5BCB80EF2A2BFAE700F37023 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EE2A2BFAE700F37023 /* PlayerTableViewCell.swift */; };
 		5BCB80F32A2BFBF800F37023 /* CellsID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80F22A2BFBF800F37023 /* CellsID.swift */; };
 		5BD6D67A2A2A7F4B00657672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6792A2A7F4B00657672 /* AppDelegate.swift */; };
 		5BD6D67C2A2A7F4B00657672 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D67B2A2A7F4B00657672 /* SceneDelegate.swift */; };
-		5BD6D67E2A2A7F4B00657672 /* HardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D67D2A2A7F4B00657672 /* HardViewController.swift */; };
+		5BD6D67E2A2A7F4B00657672 /* HardLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D67D2A2A7F4B00657672 /* HardLeagueViewController.swift */; };
 		5BD6D6832A2A7F4C00657672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD6D6822A2A7F4C00657672 /* Assets.xcassets */; };
 		5BD6D6862A2A7F4C00657672 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD6D6842A2A7F4C00657672 /* LaunchScreen.storyboard */; };
 		5BD6D6912A2A809900657672 /* Extension + PreloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6902A2A809900657672 /* Extension + PreloadViewController.swift */; };
-		5BD6D6932A2A817000657672 /* LiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6922A2A817000657672 /* LiteViewController.swift */; };
+		5BD6D6932A2A817000657672 /* LightLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6922A2A817000657672 /* LightLeagueViewController.swift */; };
 		5BD6D6952A2A83E600657672 /* PreloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6942A2A83E600657672 /* PreloadViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
+		5BA59CCE2A31D33B00E567C3 /* RaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaitingViewController.swift; sourceTree = "<group>"; };
+		5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsViewController.swift; sourceTree = "<group>"; };
 		5BCB80E62A2BE48000F37023 /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
-		5BCB80EA2A2BEB2900F37023 /* ListOfPlayersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPlayersTableViewController.swift; sourceTree = "<group>"; };
+		5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPlayersViewController.swift; sourceTree = "<group>"; };
 		5BCB80EC2A2BF6F900F37023 /* Extension + UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImage.swift"; sourceTree = "<group>"; };
 		5BCB80EE2A2BFAE700F37023 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
 		5BCB80F22A2BFBF800F37023 /* CellsID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsID.swift; sourceTree = "<group>"; };
 		5BD6D6762A2A7F4B00657672 /* TT StarLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TT StarLine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD6D6792A2A7F4B00657672 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BD6D67B2A2A7F4B00657672 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5BD6D67D2A2A7F4B00657672 /* HardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardViewController.swift; sourceTree = "<group>"; };
+		5BD6D67D2A2A7F4B00657672 /* HardLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardLeagueViewController.swift; sourceTree = "<group>"; };
 		5BD6D6822A2A7F4C00657672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BD6D6852A2A7F4C00657672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BD6D6872A2A7F4C00657672 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BD6D6902A2A809900657672 /* Extension + PreloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + PreloadViewController.swift"; sourceTree = "<group>"; };
-		5BD6D6922A2A817000657672 /* LiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteViewController.swift; sourceTree = "<group>"; };
+		5BD6D6922A2A817000657672 /* LightLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeagueViewController.swift; sourceTree = "<group>"; };
 		5BD6D6942A2A83E600657672 /* PreloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,11 +57,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BA59CCA2A31D1F200E567C3 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
+		5BA59CCB2A31D1FE00E567C3 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				5BA59CCE2A31D33B00E567C3 /* RaitingViewController.swift */,
+			);
+			path = Rating;
+			sourceTree = "<group>";
+		};
+		5BA59CCC2A31D20C00E567C3 /* Tournaments */ = {
+			isa = PBXGroup;
+			children = (
+				5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */,
+				5BA59CCD2A31D25200E567C3 /* Leagues */,
+			);
+			path = Tournaments;
+			sourceTree = "<group>";
+		};
+		5BA59CCD2A31D25200E567C3 /* Leagues */ = {
+			isa = PBXGroup;
+			children = (
+				5BD6D67D2A2A7F4B00657672 /* HardLeagueViewController.swift */,
+				5BD6D6922A2A817000657672 /* LightLeagueViewController.swift */,
+			);
+			path = Leagues;
+			sourceTree = "<group>";
+		};
 		5BCB80E52A2BE45400F37023 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				5BCB80E62A2BE48000F37023 /* Players.swift */,
 				5BCB80F22A2BFBF800F37023 /* CellsID.swift */,
+				5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,9 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				5BD6D6942A2A83E600657672 /* PreloadViewController.swift */,
-				5BD6D67D2A2A7F4B00657672 /* HardViewController.swift */,
-				5BD6D6922A2A817000657672 /* LiteViewController.swift */,
-				5BCB80EA2A2BEB2900F37023 /* ListOfPlayersTableViewController.swift */,
+				5BA59CCA2A31D1F200E567C3 /* Players */,
+				5BA59CCB2A31D1FE00E567C3 /* Rating */,
+				5BA59CCC2A31D20C00E567C3 /* Tournaments */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,10 +242,13 @@
 				5BCB80ED2A2BF6F900F37023 /* Extension + UIImage.swift in Sources */,
 				5BD6D6952A2A83E600657672 /* PreloadViewController.swift in Sources */,
 				5BCB80EF2A2BFAE700F37023 /* PlayerTableViewCell.swift in Sources */,
-				5BCB80EB2A2BEB2900F37023 /* ListOfPlayersTableViewController.swift in Sources */,
-				5BD6D67E2A2A7F4B00657672 /* HardViewController.swift in Sources */,
-				5BD6D6932A2A817000657672 /* LiteViewController.swift in Sources */,
+				5BCB80EB2A2BEB2900F37023 /* ListOfPlayersViewController.swift in Sources */,
+				5BD6D67E2A2A7F4B00657672 /* HardLeagueViewController.swift in Sources */,
+				5BA59CCF2A31D33B00E567C3 /* RaitingViewController.swift in Sources */,
+				5B0D6EB02A2D3B5000C129E0 /* Rules.swift in Sources */,
+				5BD6D6932A2A817000657672 /* LightLeagueViewController.swift in Sources */,
 				5BCB80E72A2BE48000F37023 /* Players.swift in Sources */,
+				5BA59CD12A31D3C100E567C3 /* TournamentsViewController.swift in Sources */,
 				5BD6D67A2A2A7F4B00657672 /* AppDelegate.swift in Sources */,
 				5BCB80F32A2BFBF800F37023 /* CellsID.swift in Sources */,
 				5BD6D6912A2A809900657672 /* Extension + PreloadViewController.swift in Sources */,

@@ -11,21 +11,27 @@ import UIKit
 extension PreloadViewController {
 
     private func createFirstController() -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: HardViewController())
-        navigationController.tabBarItem = UITabBarItem(title: "Hard", image: UIImage(systemName: "figure.table.tennis"), tag: 0)
+        let navigationController = UINavigationController(rootViewController: ListOfPlayersViewController())
+        navigationController.tabBarItem = UITabBarItem(title: "Игроки", image: UIImage(systemName: "person.3.fill"), tag: 0)
         return navigationController
     }
 
     private func createSecondController() -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: LiteViewController())
-        navigationController.tabBarItem = UITabBarItem(title: "Lite", image: UIImage(systemName: "figure.tennis"), tag: 1)
+        let navigationController = UINavigationController(rootViewController: RaitingViewController())
+        navigationController.tabBarItem = UITabBarItem(title: "Рейтинг", image: UIImage(systemName: "chart.line.uptrend.xyaxis"), tag: 1)
+        return navigationController
+    }
+
+    private func createThirdController() -> UINavigationController {
+        let navigationController = UINavigationController(rootViewController: TournamentsViewController())
+        navigationController.tabBarItem = UITabBarItem(title: "Турниры", image: UIImage(systemName: "figure.table.tennis"), tag: 2)
         return navigationController
     }
 
     func createTabBarController() -> UITabBarController {
         let tabBar = UITabBarController()
-        tabBar.viewControllers = [createFirstController(), createSecondController()]
-        tabBar.tabBar.backgroundColor = .systemGray5
+        tabBar.viewControllers = [createFirstController(), createSecondController(), createThirdController()]
+        tabBar.tabBar.backgroundColor = .white
         tabBar.tabBar.tintColor = .systemOrange
         tabBar.navigationItem.hidesBackButton = true
         return tabBar

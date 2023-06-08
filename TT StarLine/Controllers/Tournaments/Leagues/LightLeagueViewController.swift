@@ -1,5 +1,5 @@
 //
-//  LiteViewController.swift
+//  LightLeagueViewController.swift
 //  TT StarLine
 //
 //  Created by Aleksandr Ataev on 02.06.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LiteViewController: UIViewController {
+class LightLeagueViewController: UIViewController {
 
     //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class LiteViewController: UIViewController {
 
     //MARK: - Methods
     private func createNavBarItems() {
-        navigationItem.title = "Lite League"
+        navigationItem.title = "Light лига"
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .white
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
@@ -91,8 +91,8 @@ class LiteViewController: UIViewController {
     }
 
     @objc func addPlayer() {
-        let vc = ListOfPlayersTableViewController()
-        vc.navigationItem.title = "List of players Lite league"
+        let vc = ListOfPlayersViewController()
+        vc.navigationItem.title = "List of players Light league"
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -13,28 +13,49 @@ enum LeagueType: String {
 }
 
 struct Player {
+    var avatar: String
+    var age: Int
     var firstName: String
     var lastName: String
+    var manufacture: String
+    var contactData: String
     var league: LeagueType
 
-    static var players: [Player] = [Player(firstName: "Александр",  lastName: "Атаев",       league: .hard),
-                                    Player(firstName: "Олег",       lastName: "Басосов",     league: .hard),
-                                    Player(firstName: "Наталья",    lastName: "Гуревич",     league: .hard),
-                                    Player(firstName: "Александр",  lastName: "Конкин",      league: .hard),
-                                    Player(firstName: "Игорь",      lastName: "Ловкет",      league: .hard),
-                                    Player(firstName: "Максим",     lastName: "Юпатов",      league: .hard),
-                                    Player(firstName: "Сергей",     lastName: "Смертьев",    league: .hard),
+    static var players: [Player] = [Player(avatar: "Male", age: 4, firstName: "Александр", lastName: "Атаев", manufacture: "Победит 5",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Олег", lastName: "Басосов", manufacture: "Победит 5",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Female", age: 4, firstName: "Наталья", lastName: "Гуревич", manufacture: "Победит 2",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Александр", lastName: "Конкин", manufacture: "Победит 2",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Игорь", lastName: "Ловкет", manufacture: "Победит 2",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Максим", lastName: "Юпатов", manufacture: "Победит 4",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Сергей", lastName: "Смертьев", manufacture: "Победит 5",
+                                           contactData: "+79996691259", league: .hard),
 
-                                    Player(firstName: "Юрий",       lastName: "Буров",       league: .lite),
-                                    Player(firstName: "Дмитрий",    lastName: "Гарифуллин",  league: .lite),
-                                    Player(firstName: "Андрей",     lastName: "Дмитриев",    league: .lite),
-                                    Player(firstName: "Сергей",     lastName: "Жижанов",     league: .lite),
-                                    Player(firstName: "Дмитрий",    lastName: "Карпов",      league: .lite),
-                                    Player(firstName: "Руслан",     lastName: "Касимовский", league: .lite),
-                                    Player(firstName: "Иван",       lastName: "Куприянов",   league: .lite),
-                                    Player(firstName: "Вячеслав",   lastName: "Куприянов",   league: .lite),
-                                    Player(firstName: "Константин", lastName: "Лазутин",     league: .lite),
-                                    Player(firstName: "Дмитрий",    lastName: "Королев",     league: .lite)
+                                    Player(avatar: "Male", age: 4, firstName: "Юрий", lastName: "Буров", manufacture: "Победит 2",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Дмитрий", lastName: "Гарифуллин", manufacture: "Победит 5",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Андрей", lastName: "Дмитриев", manufacture: "Победит 5",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Сергей", lastName: "Жижанов", manufacture: "Победит 5",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Дмитрий", lastName: "Карпов", manufacture: "Победит 2",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Руслан", lastName: "Касимовский", manufacture: "Победит 2",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Иван", lastName: "Куприянов", manufacture: "Победит 2",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Вячеслав", lastName: "Куприянов", manufacture: "Победит 2",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Константин", lastName: "Лазутин", manufacture: "Победит 5",
+                                           contactData: "+79996691259", league: .hard),
+                                    Player(avatar: "Male", age: 4, firstName: "Дмитрий", lastName: "Королев", manufacture: "Победит 5",
+                                           contactData: "+79996691259", league: .hard)
     ]
 }
 

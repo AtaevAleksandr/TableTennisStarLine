@@ -12,7 +12,7 @@ class HardLeagueViewController: UIViewController {
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .tertiarySystemBackground
         addSubviews()
         setConstraints()
         createNavBarItems()
@@ -22,7 +22,11 @@ class HardLeagueViewController: UIViewController {
     private lazy var backView: UIImageView = {
         let view = UIImageView()
         view.image = BackImage.backImage
-        view.alpha = 0.1
+        if traitCollection.userInterfaceStyle == .light {
+            view.alpha = 0.2
+        } else if traitCollection.userInterfaceStyle == .dark {
+            view.alpha = 0.3
+        }
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -43,7 +47,7 @@ class HardLeagueViewController: UIViewController {
     private lazy var plusLabel: UILabel = {
         let label = UILabel()
         label.text = "+"
-        label.textColor = .white
+        label.textColor = .label
         label.font = .boldSystemFont(ofSize: 30)
         label.textAlignment = .center
         label.sizeToFit()
@@ -55,8 +59,8 @@ class HardLeagueViewController: UIViewController {
     private func createNavBarItems() {
         navigationItem.title = "Hard лига"
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .white
-        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        appearance.backgroundColor = .secondarySystemBackground
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         appearance.titleTextAttributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 20, weight: .bold)
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
@@ -64,7 +68,7 @@ class HardLeagueViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         let tabAppearance = UITabBarAppearance()
-        tabAppearance.backgroundColor = .systemGray5
+        tabAppearance.backgroundColor = .secondarySystemBackground
         tabBarController?.tabBar.standardAppearance = tabAppearance
         tabBarController?.tabBar.scrollEdgeAppearance = tabAppearance
     }

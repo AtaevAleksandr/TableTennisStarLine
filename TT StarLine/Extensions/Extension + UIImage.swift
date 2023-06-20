@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 struct BackImage {
-    static var backImage = UIImage(named: "Tournament")
+    static var backImage = UIImage(named: "Logo")
 }

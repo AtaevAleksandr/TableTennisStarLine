@@ -17,6 +17,7 @@ final class PreloadViewController: UIViewController {
         super.viewDidLoad()
         loadProgress()
         addSubviews()
+        setDarkMode()
         setConstraints()
     }
 
@@ -24,7 +25,6 @@ final class PreloadViewController: UIViewController {
     private lazy var backView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
-        view.image = UIImage(named: "TTView")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -33,8 +33,7 @@ final class PreloadViewController: UIViewController {
         let container = UIView()
         container.backgroundColor = .clear
         container.layer.cornerRadius = 10
-        container.layer.shadowColor = UIColor.black.cgColor
-        container.layer.shadowOffset = CGSize(width: -8, height: 8)
+        container.layer.shadowOffset = CGSize(width: -5, height: 5)
         container.layer.shadowRadius = 4
         container.layer.shadowOpacity = 0.6
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +42,6 @@ final class PreloadViewController: UIViewController {
 
     private lazy var progressView: UIProgressView = {
         let view = UIProgressView(progressViewStyle: .bar)
-        view.backgroundColor = .systemGray2
         view.progressTintColor = .systemOrange
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
@@ -55,7 +53,7 @@ final class PreloadViewController: UIViewController {
         let label = UILabel()
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 16)
-        label.text = "Идёт загрузка хорошего настроения: 0%"
+        label.text = "Колдуем на уменьшение \"соплей\": 0%"
         label.isHidden = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -64,7 +62,7 @@ final class PreloadViewController: UIViewController {
     private lazy var rulesLabel: UILabel = {
         let label = UILabel()
         label.text = "Регламент"
-        label.textColor = .black
+        label.textColor = .label
         label.font = .boldSystemFont(ofSize: 30)
         label.textAlignment = .center
         label.sizeToFit()
@@ -78,8 +76,7 @@ final class PreloadViewController: UIViewController {
         container.backgroundColor = .clear
         container.alpha = 0.8
         container.layer.cornerRadius = 10
-        container.layer.shadowColor = UIColor.black.cgColor
-        container.layer.shadowOffset = CGSize(width: -8, height: 8)
+        container.layer.shadowOffset = CGSize(width: -5, height: 5)
         container.layer.shadowRadius = 4
         container.layer.shadowOpacity = 0.6
         container.isHidden = true
@@ -89,18 +86,17 @@ final class PreloadViewController: UIViewController {
 
     private lazy var rulesTextView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = .white
+        textView.backgroundColor = .tertiarySystemBackground
         textView.isEditable = false
-        textView.textColor = .black
         textView.font = .systemFont(ofSize: 18)
         textView.layer.cornerRadius = 10
-        textView.textAlignment = .center
+        textView.textAlignment = .left
         textView.isHidden = true
-        textView.layer.shadowColor = UIColor.black.cgColor
-        textView.layer.shadowOffset = CGSize(width: -8, height: 8)
+        textView.layer.shadowOffset = CGSize(width: -5, height: 5)
         textView.layer.shadowRadius = 4
         textView.layer.shadowOpacity = 0.8
         textView.text = Rules.rules
+        textView.showsVerticalScrollIndicator = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -113,8 +109,7 @@ final class PreloadViewController: UIViewController {
         button.configuration?.attributedTitle?.font = .systemFont(ofSize: 20)
         button.isHidden = true
         button.configuration?.baseBackgroundColor = .systemOrange
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: -8, height: 8)
+        button.layer.shadowOffset = CGSize(width: -5, height: 5)
         button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.6
         button.addTarget(self, action: #selector(goToLeagueVC), for: .touchUpInside)
@@ -183,6 +178,24 @@ final class PreloadViewController: UIViewController {
         }
     }
 
+    private func setDarkMode() {
+        if traitCollection.userInterfaceStyle == .light {
+            backView.image = UIImage(named: "TTView")
+            shadowProgressView.layer.shadowColor = UIColor.black.cgColor
+            progressView.backgroundColor = .systemGray2
+            shadowTextView.layer.shadowColor = UIColor.black.cgColor
+            rulesTextView.layer.shadowColor = UIColor.black.cgColor
+            acceptButton.layer.shadowColor = UIColor.black.cgColor
+        } else if traitCollection.userInterfaceStyle == .dark {
+            backView.image = UIImage(named: "TTViewDark")
+            shadowProgressView.layer.shadowColor = UIColor.white.cgColor
+            progressView.backgroundColor = .systemGray3
+            shadowTextView.layer.shadowColor = UIColor.white.cgColor
+            rulesTextView.layer.shadowColor = UIColor.white.cgColor
+            acceptButton.layer.shadowColor = UIColor.white.cgColor
+        }
+    }
+
     @objc private func updateTimer() {
         progress += 0.01
         if progress > 1.0 {
@@ -209,6 +222,6 @@ final class PreloadViewController: UIViewController {
         progressView.progress = progress
 
         let percent = Int(progress * 100)
-        progressLabel.text = "Идёт загрузка хорошего настроения: \(percent)%"
+        progressLabel.text = "Колдуем на уменьшение \"соплей\": \(percent)%"
     }
 }

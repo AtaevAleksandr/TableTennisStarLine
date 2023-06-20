@@ -1,5 +1,5 @@
 //
-//  PlayerTableViewCell.swift
+//  ListOfPlayersTableViewCell.swift
 //  TT StarLine
 //
 //  Created by Aleksandr Ataev on 04.06.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlayerTableViewCell: UITableViewCell {
+class ListOfPlayersTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,6 +33,7 @@ class PlayerTableViewCell: UITableViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.numberOfLines = 0
         label.textColor = .systemOrange
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -41,7 +42,7 @@ class PlayerTableViewCell: UITableViewCell {
     private lazy var ageLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .black
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -49,7 +50,7 @@ class PlayerTableViewCell: UITableViewCell {
     lazy var leagueLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .black
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -57,7 +58,8 @@ class PlayerTableViewCell: UITableViewCell {
     private lazy var manufactureLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .black
+        label.numberOfLines = 0
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -65,7 +67,7 @@ class PlayerTableViewCell: UITableViewCell {
     private lazy var contactDataLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .black
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -85,7 +87,8 @@ class PlayerTableViewCell: UITableViewCell {
             avatarImageView.heightAnchor.constraint(equalToConstant: 140),
 
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: margin),
-            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: margin),
+            nameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
 
             ageLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             ageLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
@@ -95,9 +98,9 @@ class PlayerTableViewCell: UITableViewCell {
 
             manufactureLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             manufactureLabel.topAnchor.constraint(equalTo: leagueLabel.bottomAnchor, constant: 4),
+            manufactureLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
 
             contactDataLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            contactDataLabel.topAnchor.constraint(equalTo: manufactureLabel.bottomAnchor, constant: 4),
             contactDataLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -margin)
         ])
     }
@@ -107,7 +110,7 @@ class PlayerTableViewCell: UITableViewCell {
         nameLabel.text = "\(player.firstName) \(player.lastName)"
         ageLabel.text = "Возраст: \(player.age)"
         leagueLabel.text = "Играет в лиге: \(player.league.rawValue)"
-        manufactureLabel.text = "Работает на: \(player.manufacture)"
+        manufactureLabel.text = "Производство: \(player.manufacture)"
         contactDataLabel.text = "Контакт: \(player.contactData)"
     }
 }

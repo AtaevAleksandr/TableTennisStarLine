@@ -8,5 +8,6 @@
 import Foundation
 
 struct Cell {
-    static let tableViewCell = "ListOfPlayersTableViewController"
+    static let listOfPlayersTableViewCell = "ListOfPlayersTableViewController"
+    static let ratingTableViewCell = "RatingTableViewCell"
 }

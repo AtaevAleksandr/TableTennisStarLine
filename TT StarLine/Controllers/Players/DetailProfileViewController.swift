@@ -14,7 +14,7 @@ class DetailProfileViewController: UIViewController {
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .tertiarySystemBackground
         addSubviews()
         setConstraints()
     }
@@ -22,7 +22,6 @@ class DetailProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         createNavBarItems()
-        navigationController?.navigationBar.layoutIfNeeded()
     }
 
     //MARK: - Clousers
@@ -37,6 +36,7 @@ class DetailProfileViewController: UIViewController {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "\(player.firstName) \(player.lastName)"
+        label.numberOfLines = 0
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = .systemOrange
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +47,7 @@ class DetailProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "Возраст: \(player.age)"
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .black
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -67,9 +67,10 @@ class DetailProfileViewController: UIViewController {
 
     private lazy var manufactureLabel: UILabel = {
         let label = UILabel()
-        label.text = "Работает на: \(player.manufacture)"
+        label.text = "Производство: \(player.manufacture)"
+        label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .black
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -78,7 +79,7 @@ class DetailProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "Контакт: \(player.contactData)"
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .black
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -87,12 +88,17 @@ class DetailProfileViewController: UIViewController {
     private func createNavBarItems() {
         navigationItem.title = "Информация об игроке"
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .white
-        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        appearance.backgroundColor = .secondarySystemBackground
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         appearance.titleTextAttributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 20, weight: .bold)
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
+
+        let dismissButton = UIBarButtonItem(title: "Закрыть", style: .plain, target: self, action: #selector(dismissButtonTapped))
+        dismissButton.tintColor = .systemOrange
+
+        navigationItem.leftBarButtonItem = dismissButton
     }
 
     private func addSubviews() {
@@ -121,5 +127,9 @@ class DetailProfileViewController: UIViewController {
             contactDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             contactDataLabel.topAnchor.constraint(equalTo: manufactureLabel.bottomAnchor, constant: 8)
         ])
+    }
+
+    @objc private func dismissButtonTapped() {
+        dismiss(animated: true)
     }
 }

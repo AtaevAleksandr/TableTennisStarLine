@@ -17,7 +17,7 @@ extension PreloadViewController {
     }
 
     private func createSecondController() -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: RaitingViewController())
+        let navigationController = UINavigationController(rootViewController: RatingViewController())
         navigationController.tabBarItem = UITabBarItem(title: "Рейтинг", image: UIImage(systemName: "chart.line.uptrend.xyaxis"), tag: 1)
         return navigationController
     }
@@ -31,7 +31,6 @@ extension PreloadViewController {
     func createTabBarController() -> UITabBarController {
         let tabBar = UITabBarController()
         tabBar.viewControllers = [createFirstController(), createSecondController(), createThirdController()]
-        tabBar.tabBar.backgroundColor = .white
         tabBar.tabBar.tintColor = .systemOrange
         tabBar.navigationItem.hidesBackButton = true
         return tabBar

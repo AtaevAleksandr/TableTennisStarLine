@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B02282B2A3F8E4900DBE3E4 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B02282A2A3F8E4900DBE3E4 /* RatingTableViewCell.swift */; };
 		5B0D6EB02A2D3B5000C129E0 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */; };
-		5BA59CCF2A31D33B00E567C3 /* RaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59CCE2A31D33B00E567C3 /* RaitingViewController.swift */; };
+		5BA59CCF2A31D33B00E567C3 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59CCE2A31D33B00E567C3 /* RatingViewController.swift */; };
 		5BA59CD12A31D3C100E567C3 /* TournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */; };
 		5BCB80E72A2BE48000F37023 /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80E62A2BE48000F37023 /* Players.swift */; };
 		5BCB80EB2A2BEB2900F37023 /* ListOfPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */; };
 		5BCB80ED2A2BF6F900F37023 /* Extension + UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EC2A2BF6F900F37023 /* Extension + UIImage.swift */; };
-		5BCB80EF2A2BFAE700F37023 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EE2A2BFAE700F37023 /* PlayerTableViewCell.swift */; };
+		5BCB80EF2A2BFAE700F37023 /* ListOfPlayersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EE2A2BFAE700F37023 /* ListOfPlayersTableViewCell.swift */; };
 		5BCB80F32A2BFBF800F37023 /* CellsID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80F22A2BFBF800F37023 /* CellsID.swift */; };
 		5BD6D67A2A2A7F4B00657672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6792A2A7F4B00657672 /* AppDelegate.swift */; };
 		5BD6D67C2A2A7F4B00657672 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D67B2A2A7F4B00657672 /* SceneDelegate.swift */; };
@@ -27,13 +28,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B02282A2A3F8E4900DBE3E4 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
-		5BA59CCE2A31D33B00E567C3 /* RaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaitingViewController.swift; sourceTree = "<group>"; };
+		5BA59CCE2A31D33B00E567C3 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsViewController.swift; sourceTree = "<group>"; };
 		5BCB80E62A2BE48000F37023 /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPlayersViewController.swift; sourceTree = "<group>"; };
 		5BCB80EC2A2BF6F900F37023 /* Extension + UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImage.swift"; sourceTree = "<group>"; };
-		5BCB80EE2A2BFAE700F37023 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
+		5BCB80EE2A2BFAE700F37023 /* ListOfPlayersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPlayersTableViewCell.swift; sourceTree = "<group>"; };
 		5BCB80F22A2BFBF800F37023 /* CellsID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsID.swift; sourceTree = "<group>"; };
 		5BD6D6762A2A7F4B00657672 /* TT StarLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TT StarLine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD6D6792A2A7F4B00657672 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,7 +73,7 @@
 		5BA59CCB2A31D1FE00E567C3 /* Rating */ = {
 			isa = PBXGroup;
 			children = (
-				5BA59CCE2A31D33B00E567C3 /* RaitingViewController.swift */,
+				5BA59CCE2A31D33B00E567C3 /* RatingViewController.swift */,
 			);
 			path = Rating;
 			sourceTree = "<group>";
@@ -107,7 +109,8 @@
 		5BCB80F02A2BFB1200F37023 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				5BCB80EE2A2BFAE700F37023 /* PlayerTableViewCell.swift */,
+				5BCB80EE2A2BFAE700F37023 /* ListOfPlayersTableViewCell.swift */,
+				5B02282A2A3F8E4900DBE3E4 /* RatingTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -245,10 +248,11 @@
 				5BF730152A326D5A001D7880 /* DetailProfileViewController.swift in Sources */,
 				5BCB80ED2A2BF6F900F37023 /* Extension + UIImage.swift in Sources */,
 				5BD6D6952A2A83E600657672 /* PreloadViewController.swift in Sources */,
-				5BCB80EF2A2BFAE700F37023 /* PlayerTableViewCell.swift in Sources */,
+				5BCB80EF2A2BFAE700F37023 /* ListOfPlayersTableViewCell.swift in Sources */,
 				5BCB80EB2A2BEB2900F37023 /* ListOfPlayersViewController.swift in Sources */,
 				5BD6D67E2A2A7F4B00657672 /* HardLeagueViewController.swift in Sources */,
-				5BA59CCF2A31D33B00E567C3 /* RaitingViewController.swift in Sources */,
+				5B02282B2A3F8E4900DBE3E4 /* RatingTableViewCell.swift in Sources */,
+				5BA59CCF2A31D33B00E567C3 /* RatingViewController.swift in Sources */,
 				5B0D6EB02A2D3B5000C129E0 /* Rules.swift in Sources */,
 				5BD6D6932A2A817000657672 /* LightLeagueViewController.swift in Sources */,
 				5BCB80E72A2BE48000F37023 /* Players.swift in Sources */,
@@ -399,9 +403,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TT StarLine/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -429,9 +435,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TT StarLine/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

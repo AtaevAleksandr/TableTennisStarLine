@@ -1,5 +1,5 @@
 //
-//  TournamentsViewController.swift
+//  RatingViewController.swift
 //  TT StarLine
 //
 //  Created by Aleksandr Ataev on 08.06.2023.
@@ -7,9 +7,10 @@
 
 import UIKit
 
-class TournamentsViewController: UIViewController {
+class RatingViewController: UIViewController {
 
     var players = Player.players
+    var sections = [LeagueType.hard, LeagueType.light]
 
     //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -39,20 +40,21 @@ class TournamentsViewController: UIViewController {
     }()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorInset = .zero
+        tableView.allowsSelection = false
+        tableView.separatorInset = .init(top: 0, left: 86, bottom: 0, right: 0)
         tableView.separatorColor = .tertiaryLabel
-        tableView.register(ListOfPlayersTableViewCell.self, forCellReuseIdentifier: Cell.listOfPlayersTableViewCell)
+        tableView.register(RatingTableViewCell.self, forCellReuseIdentifier: Cell.ratingTableViewCell)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
     //MARK: - Methods
     private func createNavBarItems() {
-        navigationItem.title = "Список турниров"
+        navigationItem.title = "Рейтинг игроков"
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .secondarySystemBackground
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
@@ -86,26 +88,60 @@ class TournamentsViewController: UIViewController {
     }
 }
 
-extension TournamentsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+extension RatingViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        sections.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.listOfPlayersTableViewCell, for: indexPath) as! ListOfPlayersTableViewCell
-        return cell
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let currentLeague = sections[section]
+        let playersInLeague = players.filter { $0.league == currentLeague }
+        return playersInLeague.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let currentLeague = sections[section]
+        return "🏓 \(currentLeague.rawValue) лига"
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        50
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        UIView()
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        0
+    }
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView else { return }
+        let font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        headerView.textLabel?.font = font
+        if traitCollection.userInterfaceStyle == .light {
+            headerView.textLabel?.textColor = .darkGray
+        } else if traitCollection.userInterfaceStyle == .dark {
+            headerView.textLabel?.textColor = .lightGray
+        }
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .clear
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.ratingTableViewCell, for: indexPath) as! RatingTableViewCell
+        let currentLeague = sections[indexPath.section]
+        let playersInLeague = players.filter { $0.league == currentLeague }
+        let currentPlayer = playersInLeague[indexPath.row]
+        cell.configure(with: currentPlayer)
+        return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        80
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

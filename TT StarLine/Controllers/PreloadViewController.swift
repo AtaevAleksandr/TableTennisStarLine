@@ -42,7 +42,7 @@ final class PreloadViewController: UIViewController {
 
     private lazy var progressView: UIProgressView = {
         let view = UIProgressView(progressViewStyle: .bar)
-        view.progressTintColor = .systemOrange
+        view.progressTintColor = .systemBlue
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -108,7 +108,7 @@ final class PreloadViewController: UIViewController {
         button.configuration?.title = "Понял, принял!"
         button.configuration?.attributedTitle?.font = .systemFont(ofSize: 20)
         button.isHidden = true
-        button.configuration?.baseBackgroundColor = .systemOrange
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.layer.shadowOffset = CGSize(width: -5, height: 5)
         button.layer.shadowRadius = 4
         button.layer.shadowOpacity = 0.6

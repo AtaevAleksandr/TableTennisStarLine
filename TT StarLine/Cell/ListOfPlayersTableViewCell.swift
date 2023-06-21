@@ -34,7 +34,7 @@ class ListOfPlayersTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.numberOfLines = 0
-        label.textColor = .systemOrange
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

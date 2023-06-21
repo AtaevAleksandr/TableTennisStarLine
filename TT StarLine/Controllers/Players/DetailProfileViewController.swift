@@ -14,7 +14,7 @@ class DetailProfileViewController: UIViewController {
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .secondarySystemBackground
         addSubviews()
         setConstraints()
     }
@@ -38,7 +38,7 @@ class DetailProfileViewController: UIViewController {
         label.text = "\(player.firstName) \(player.lastName)"
         label.numberOfLines = 0
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .systemOrange
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -88,7 +88,7 @@ class DetailProfileViewController: UIViewController {
     private func createNavBarItems() {
         navigationItem.title = "Информация об игроке"
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .secondarySystemBackground
+        appearance.backgroundColor = .tertiarySystemBackground
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         appearance.titleTextAttributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 20, weight: .bold)
         navigationController?.navigationBar.standardAppearance = appearance
@@ -96,7 +96,7 @@ class DetailProfileViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
 
         let dismissButton = UIBarButtonItem(title: "Закрыть", style: .plain, target: self, action: #selector(dismissButtonTapped))
-        dismissButton.tintColor = .systemOrange
+        dismissButton.tintColor = .systemBlue
 
         navigationItem.leftBarButtonItem = dismissButton
     }

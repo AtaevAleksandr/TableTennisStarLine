@@ -10,11 +10,12 @@ import UIKit
 class ListOfPlayersViewController: UIViewController {
 
     var players = Player.players
+    lazy var sortedPlayers = players.sorted { $0.league.rawValue < $1.league.rawValue }
 
     //MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .secondarySystemBackground
         addSubviews()
         setConstraints()
     }
@@ -54,7 +55,7 @@ class ListOfPlayersViewController: UIViewController {
     private func createNavBarItems() {
         navigationItem.title = "Список игроков"
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .secondarySystemBackground
+        appearance.backgroundColor = .tertiarySystemBackground
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         appearance.titleTextAttributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 20, weight: .bold)
         navigationController?.navigationBar.standardAppearance = appearance
@@ -63,7 +64,7 @@ class ListOfPlayersViewController: UIViewController {
 
 
         let tabAppearance = UITabBarAppearance()
-        tabAppearance.backgroundColor = .secondarySystemBackground
+        tabAppearance.backgroundColor = .tertiarySystemBackground
         tabBarController?.tabBar.standardAppearance = tabAppearance
         tabBarController?.tabBar.scrollEdgeAppearance = tabAppearance
     }
@@ -94,16 +95,16 @@ extension ListOfPlayersViewController: UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.listOfPlayersTableViewCell, for: indexPath) as! ListOfPlayersTableViewCell
-        cell.configure(with: players[indexPath.row])
+        cell.configure(with: sortedPlayers[indexPath.row])
         return cell
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let playerCell = cell as? ListOfPlayersTableViewCell else { return }
 
-        let player = players[indexPath.row]
+        let selectedPlayers = sortedPlayers[indexPath.row]
 
-        if player.league == .hard {
+        if selectedPlayers.league == .hard {
             playerCell.leagueLabel.textColor = .systemRed
         } else {
             playerCell.leagueLabel.textColor = .systemGreen
@@ -115,7 +116,8 @@ extension ListOfPlayersViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = DetailProfileViewController()
-        vc.player = Player.players[indexPath.row]
+        let selectedPlayers = sortedPlayers[indexPath.row]
+        vc.player = selectedPlayers
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)
     }

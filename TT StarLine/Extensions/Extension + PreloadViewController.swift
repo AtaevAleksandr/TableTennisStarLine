@@ -31,7 +31,7 @@ extension PreloadViewController {
     func createTabBarController() -> UITabBarController {
         let tabBar = UITabBarController()
         tabBar.viewControllers = [createFirstController(), createSecondController(), createThirdController()]
-        tabBar.tabBar.tintColor = .systemOrange
+        tabBar.tabBar.tintColor = .systemBlue
         tabBar.navigationItem.hidesBackButton = true
         return tabBar
     }

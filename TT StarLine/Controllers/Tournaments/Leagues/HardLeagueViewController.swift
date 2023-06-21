@@ -12,7 +12,7 @@ class HardLeagueViewController: UIViewController {
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .secondarySystemBackground
         addSubviews()
         setConstraints()
         createNavBarItems()
@@ -34,7 +34,7 @@ class HardLeagueViewController: UIViewController {
     private lazy var addPlayerButton: UIButton = {
         let button = UIButton()
         button.configuration = .filled()
-        button.configuration?.baseBackgroundColor = .systemOrange
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.titleLabel?.textAlignment = .center
         button.layer.cornerRadius = 30
         button.clipsToBounds = true
@@ -59,7 +59,7 @@ class HardLeagueViewController: UIViewController {
     private func createNavBarItems() {
         navigationItem.title = "Hard лига"
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .secondarySystemBackground
+        appearance.backgroundColor = .tertiarySystemBackground
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         appearance.titleTextAttributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 20, weight: .bold)
         navigationController?.navigationBar.standardAppearance = appearance
@@ -68,7 +68,7 @@ class HardLeagueViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         let tabAppearance = UITabBarAppearance()
-        tabAppearance.backgroundColor = .secondarySystemBackground
+        tabAppearance.backgroundColor = .tertiarySystemBackground
         tabBarController?.tabBar.standardAppearance = tabAppearance
         tabBarController?.tabBar.scrollEdgeAppearance = tabAppearance
     }

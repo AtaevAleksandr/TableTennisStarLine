@@ -8,16 +8,16 @@
 import UIKit
 
 class LightLeagueViewController: UIViewController {
-
+    
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .secondarySystemBackground
         addSubviews()
         setConstraints()
         createNavBarItems()
     }
-
+    
     //MARK: - Clousers
     private lazy var backView: UIImageView = {
         let view = UIImageView()
@@ -30,11 +30,11 @@ class LightLeagueViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     private lazy var addPlayerButton: UIButton = {
         let button = UIButton()
         button.configuration = .filled()
-        button.configuration?.baseBackgroundColor = .systemOrange
+        button.configuration?.baseBackgroundColor = .systemBlue
         button.titleLabel?.textAlignment = .center
         button.layer.cornerRadius = 30
         button.clipsToBounds = true
@@ -43,7 +43,7 @@ class LightLeagueViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
     private lazy var plusLabel: UILabel = {
         let label = UILabel()
         label.text = "+"
@@ -54,47 +54,47 @@ class LightLeagueViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     //MARK: - Methods
     private func createNavBarItems() {
         navigationItem.title = "Light лига"
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .secondarySystemBackground
+        appearance.backgroundColor = .tertiarySystemBackground
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         appearance.titleTextAttributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 20, weight: .bold)
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        
         let tabAppearance = UITabBarAppearance()
-        tabAppearance.backgroundColor = .secondarySystemBackground
+        tabAppearance.backgroundColor = .tertiarySystemBackground
         tabBarController?.tabBar.standardAppearance = tabAppearance
         tabBarController?.tabBar.scrollEdgeAppearance = tabAppearance
     }
-
+    
     private func addSubviews() {
         [backView, addPlayerButton].forEach { view.addSubview($0) }
         addPlayerButton.addSubview(plusLabel)
     }
-
+    
     private func setConstraints() {
         NSLayoutConstraint.activate([
             backView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             backView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             backView.widthAnchor.constraint(equalTo: view.widthAnchor),
             backView.heightAnchor.constraint(equalTo: view.widthAnchor),
-
+            
             addPlayerButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
             addPlayerButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
             addPlayerButton.heightAnchor.constraint(equalToConstant: 60),
             addPlayerButton.widthAnchor.constraint(equalToConstant: 60),
-
+            
             plusLabel.centerXAnchor.constraint(equalTo: addPlayerButton.centerXAnchor),
             plusLabel.centerYAnchor.constraint(equalTo: addPlayerButton.centerYAnchor, constant: -1.5),
         ])
     }
-
+    
     @objc func addPlayer() {
         let vc = ListOfPlayersViewController()
         vc.navigationItem.title = "List of players Light league"

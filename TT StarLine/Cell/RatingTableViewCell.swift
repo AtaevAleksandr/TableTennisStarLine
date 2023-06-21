@@ -33,7 +33,7 @@ class RatingTableViewCell: UITableViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = .systemOrange
+        label.textColor = .label
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

@@ -14,7 +14,7 @@ class TournamentsViewController: UIViewController {
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .secondarySystemBackground
         addSubviews()
         setConstraints()
     }
@@ -54,7 +54,7 @@ class TournamentsViewController: UIViewController {
     private func createNavBarItems() {
         navigationItem.title = "Список турниров"
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .secondarySystemBackground
+        appearance.backgroundColor = .tertiarySystemBackground
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
         appearance.titleTextAttributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 20, weight: .bold)
         navigationController?.navigationBar.standardAppearance = appearance
@@ -62,11 +62,11 @@ class TournamentsViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
 
         let tabAppearance = UITabBarAppearance()
-        tabAppearance.backgroundColor = .secondarySystemBackground
+        tabAppearance.backgroundColor = .tertiarySystemBackground
         tabBarController?.tabBar.standardAppearance = tabAppearance
         tabBarController?.tabBar.scrollEdgeAppearance = tabAppearance
     }
-
+    
     private func addSubviews() {
         [backView, tableView].forEach { view.addSubview($0) }
     }

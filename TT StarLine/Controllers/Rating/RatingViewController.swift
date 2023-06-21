@@ -12,6 +12,12 @@ class RatingViewController: UIViewController {
     var players = Player.players
     var sections = [LeagueType.hard, LeagueType.light]
 
+    lazy var rowsToDisplay = {
+        let currentLeague = sections[segmentControl.selectedSegmentIndex]
+        let playersInLeague = players.filter { $0.league == currentLeague }
+        return playersInLeague
+    }()
+
     //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,15 @@ class RatingViewController: UIViewController {
     }
 
     //MARK: - Clousers
+    private lazy var segmentControl: UISegmentedControl = {
+        let segment = UISegmentedControl(items: ["🏓 \(sections[0].rawValue) лига", "🏓 \(sections[1].rawValue) лига"])
+        segment.selectedSegmentIndex = 0
+        segment.selectedSegmentTintColor = UIColor(red: 255/255, green: 149/255, blue: 0, alpha: 0.8)
+        segment.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
+        segment.translatesAutoresizingMaskIntoConstraints = false
+        return segment
+    }()
+
     private lazy var backView: UIImageView = {
         let view = UIImageView()
         view.image = BackImage.backImage
@@ -40,7 +55,7 @@ class RatingViewController: UIViewController {
     }()
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
@@ -70,12 +85,16 @@ class RatingViewController: UIViewController {
     }
 
     private func addSubviews() {
-        [backView, tableView].forEach { view.addSubview($0) }
+        [backView, segmentControl, tableView].forEach { view.addSubview($0) }
     }
 
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            segmentControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+            tableView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 8),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -86,45 +105,25 @@ class RatingViewController: UIViewController {
             backView.heightAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
+
+    @objc private func handleSegmentChange() {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            let currentLeague = sections[segmentControl.selectedSegmentIndex]
+            let playersInLeague = players.filter { $0.league == currentLeague }
+            rowsToDisplay = playersInLeague
+        default:
+            let currentLeague = sections[segmentControl.selectedSegmentIndex]
+            let playersInLeague = players.filter { $0.league == currentLeague }
+            rowsToDisplay = playersInLeague
+        }
+        tableView.reloadData()
+    }
 }
 
 extension RatingViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        sections.count
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let currentLeague = sections[section]
-        let playersInLeague = players.filter { $0.league == currentLeague }
-        return playersInLeague.count
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let currentLeague = sections[section]
-        return "🏓 \(currentLeague.rawValue) лига"
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        50
-    }
-
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        UIView()
-    }
-
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        0
-    }
-
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let headerView = view as? UITableViewHeaderFooterView else { return }
-        let font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        headerView.textLabel?.font = font
-        if traitCollection.userInterfaceStyle == .light {
-            headerView.textLabel?.textColor = .darkGray
-        } else if traitCollection.userInterfaceStyle == .dark {
-            headerView.textLabel?.textColor = .lightGray
-        }
+        rowsToDisplay.count
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -133,10 +132,8 @@ extension RatingViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.ratingTableViewCell, for: indexPath) as! RatingTableViewCell
-        let currentLeague = sections[indexPath.section]
-        let playersInLeague = players.filter { $0.league == currentLeague }
-        let currentPlayer = playersInLeague[indexPath.row]
-        cell.configure(with: currentPlayer)
+        let players = rowsToDisplay[indexPath.row]
+        cell.configure(with: players)
         return cell
     }
 
@@ -146,7 +143,7 @@ extension RatingViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.players.remove(at: indexPath.row)
+            self.rowsToDisplay.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

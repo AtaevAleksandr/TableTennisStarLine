@@ -19,6 +19,7 @@ final class PreloadViewController: UIViewController {
         addSubviews()
         setDarkMode()
         setConstraints()
+        navigationController?.navigationBar.isHidden = true
     }
 
     //MARK: - Clousers
@@ -141,25 +142,25 @@ final class PreloadViewController: UIViewController {
 
             progressView.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
             progressView.centerYAnchor.constraint(equalTo: backView.centerYAnchor),
-            progressView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 20),
-            progressView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -20),
+            progressView.leadingAnchor.constraint(equalTo: shadowProgressView.leadingAnchor),
+            progressView.trailingAnchor.constraint(equalTo: shadowProgressView.trailingAnchor),
             progressView.heightAnchor.constraint(equalToConstant: 25),
 
             progressLabel.centerXAnchor.constraint(equalTo: progressView.centerXAnchor),
             progressLabel.centerYAnchor.constraint(equalTo: progressView.centerYAnchor),
 
-            rulesLabel.bottomAnchor.constraint(equalTo: shadowTextView.topAnchor, constant: -10),
+            rulesLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             rulesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            shadowTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            shadowTextView.topAnchor.constraint(equalTo: rulesLabel.bottomAnchor, constant: 20),
             shadowTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             shadowTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            shadowTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
+            shadowTextView.bottomAnchor.constraint(equalTo: acceptButton.topAnchor, constant: -30),
 
-            rulesTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            rulesTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            rulesTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            rulesTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
+            rulesTextView.topAnchor.constraint(equalTo: shadowTextView.topAnchor),
+            rulesTextView.leadingAnchor.constraint(equalTo: shadowTextView.leadingAnchor),
+            rulesTextView.trailingAnchor.constraint(equalTo: shadowTextView.trailingAnchor),
+            rulesTextView.bottomAnchor.constraint(equalTo: shadowTextView.bottomAnchor),
 
             acceptButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             acceptButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
@@ -215,7 +216,8 @@ final class PreloadViewController: UIViewController {
     }
 
     @objc private func goToLeagueVC() {
-        navigationController?.pushViewController(self.createTabBarController(), animated: true)
+        let vc = createTabBarController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func updateProgress(_ progress: Float) {

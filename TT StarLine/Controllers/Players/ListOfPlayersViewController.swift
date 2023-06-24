@@ -30,8 +30,9 @@ class ListOfPlayersViewController: UIViewController {
     private lazy var backView: UIImageView = {
         let view = UIImageView()
         view.image = BackImage.backImage
+        view.contentMode = .scaleAspectFit
         if traitCollection.userInterfaceStyle == .light {
-            view.alpha = 0.2
+            view.alpha = 0.1
         } else if traitCollection.userInterfaceStyle == .dark {
             view.alpha = 0.3
         }
@@ -42,6 +43,7 @@ class ListOfPlayersViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
+        tableView.backgroundView = self.backView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = .init(top: 0, left: 156, bottom: 0, right: 0)
@@ -61,7 +63,7 @@ class ListOfPlayersViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
-
+        navigationController?.navigationBar.prefersLargeTitles = true
 
         let tabAppearance = UITabBarAppearance()
         tabAppearance.backgroundColor = .tertiarySystemBackground
@@ -70,7 +72,7 @@ class ListOfPlayersViewController: UIViewController {
     }
 
     private func addSubviews() {
-        [backView, tableView].forEach { view.addSubview($0) }
+        view.addSubview(tableView)
     }
 
     private func setConstraints() {

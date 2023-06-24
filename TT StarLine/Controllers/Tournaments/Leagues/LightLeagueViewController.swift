@@ -23,7 +23,7 @@ class LightLeagueViewController: UIViewController {
         let view = UIImageView()
         view.image = BackImage.backImage
         if traitCollection.userInterfaceStyle == .light {
-            view.alpha = 0.2
+            view.alpha = 0.1
         } else if traitCollection.userInterfaceStyle == .dark {
             view.alpha = 0.3
         }

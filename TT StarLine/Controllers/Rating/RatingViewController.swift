@@ -46,8 +46,9 @@ class RatingViewController: UIViewController {
     private lazy var backView: UIImageView = {
         let view = UIImageView()
         view.image = BackImage.backImage
+        view.contentMode = .scaleAspectFit
         if traitCollection.userInterfaceStyle == .light {
-            view.alpha = 0.2
+            view.alpha = 0.1
         } else if traitCollection.userInterfaceStyle == .dark {
             view.alpha = 0.3
         }
@@ -58,6 +59,7 @@ class RatingViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .clear
+        tableView.backgroundView = self.backView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
@@ -78,6 +80,7 @@ class RatingViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         let tabAppearance = UITabBarAppearance()
         tabAppearance.backgroundColor = .tertiarySystemBackground
@@ -86,7 +89,7 @@ class RatingViewController: UIViewController {
     }
     
     private func addSubviews() {
-        [backView, segmentControl, tableView].forEach { view.addSubview($0) }
+        [tableView, segmentControl].forEach { view.addSubview($0) }
     }
     
     private func setConstraints() {
@@ -94,7 +97,7 @@ class RatingViewController: UIViewController {
             segmentControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
+
             tableView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 8),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

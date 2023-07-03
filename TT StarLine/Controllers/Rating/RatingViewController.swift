@@ -7,17 +7,20 @@
 
 import UIKit
 
-class RatingViewController: UIViewController {
+final class RatingViewController: UIViewController {
+
+    private var players: [Player] {
+        return PlayerManager.shared.getPlayers()
+    }
     
-    var players = Player.players
     var sections = [LeagueType.hard, LeagueType.light]
     
-    lazy var rowsToDisplay = {
+    var rowsToDisplay: [Player] {
         let currentLeague = sections[segmentControl.selectedSegmentIndex]
         let playersInLeague = players.filter { $0.league == currentLeague }
         let sortedPlayers = playersInLeague.sorted { $0.rating > $1.rating }
         return sortedPlayers
-    }()
+    }
     
     //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -50,7 +53,7 @@ class RatingViewController: UIViewController {
         if traitCollection.userInterfaceStyle == .light {
             view.alpha = 0.1
         } else if traitCollection.userInterfaceStyle == .dark {
-            view.alpha = 0.3
+            view.alpha = 0.2
         }
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -81,7 +84,7 @@ class RatingViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+
         let tabAppearance = UITabBarAppearance()
         tabAppearance.backgroundColor = .tertiarySystemBackground
         tabBarController?.tabBar.standardAppearance = tabAppearance
@@ -102,7 +105,7 @@ class RatingViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
+
             backView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             backView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             backView.widthAnchor.constraint(equalTo: view.widthAnchor),
@@ -111,22 +114,11 @@ class RatingViewController: UIViewController {
     }
     
     @objc private func handleSegmentChange() {
-        switch segmentControl.selectedSegmentIndex {
-        case 0:
-            let currentLeague = sections[segmentControl.selectedSegmentIndex]
-            let playersInLeague = players.filter { $0.league == currentLeague }
-            let sortedPlayers = playersInLeague.sorted { $0.rating > $1.rating }
-            rowsToDisplay = sortedPlayers
-        default:
-            let currentLeague = sections[segmentControl.selectedSegmentIndex]
-            let playersInLeague = players.filter { $0.league == currentLeague }
-            let sortedPlayers = playersInLeague.sorted { $0.rating > $1.rating }
-            rowsToDisplay = sortedPlayers
-        }
         tableView.reloadData()
     }
 }
 
+//MARK: - Extensions
 extension RatingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         rowsToDisplay.count
@@ -145,12 +137,5 @@ extension RatingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            self.rowsToDisplay.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
     }
 }

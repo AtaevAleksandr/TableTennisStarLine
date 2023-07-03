@@ -107,7 +107,7 @@ class ListOfPlayersTableViewCell: UITableViewCell {
 
     func configure(with player: Player) {
         avatarImageView.image = UIImage(named: player.avatar.rawValue)
-        nameLabel.text = "\(player.firstName) \(player.lastName)"
+        nameLabel.text = "\(player.lastName) \(player.firstName)"
         ageLabel.text = "Возраст: \(player.age)"
         leagueLabel.text = "Играет в лиге: \(player.league.rawValue)"
         manufactureLabel.text = "Производство: \(player.manufacture)"

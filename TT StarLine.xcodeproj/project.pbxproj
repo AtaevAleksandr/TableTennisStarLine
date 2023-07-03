@@ -11,6 +11,7 @@
 		5B0D6EB02A2D3B5000C129E0 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */; };
 		5BA59CCF2A31D33B00E567C3 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59CCE2A31D33B00E567C3 /* RatingViewController.swift */; };
 		5BA59CD12A31D3C100E567C3 /* TournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */; };
+		5BC4D7752A51815F00A9310F /* AddPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4D7742A51815F00A9310F /* AddPlayerViewController.swift */; };
 		5BCB80E72A2BE48000F37023 /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80E62A2BE48000F37023 /* Players.swift */; };
 		5BCB80EB2A2BEB2900F37023 /* ListOfPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */; };
 		5BCB80ED2A2BF6F900F37023 /* Extension + UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EC2A2BF6F900F37023 /* Extension + UIImage.swift */; };
@@ -25,6 +26,8 @@
 		5BD6D6932A2A817000657672 /* LightLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6922A2A817000657672 /* LightLeagueViewController.swift */; };
 		5BD6D6952A2A83E600657672 /* PreloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6942A2A83E600657672 /* PreloadViewController.swift */; };
 		5BF730152A326D5A001D7880 /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF730142A326D5A001D7880 /* DetailProfileViewController.swift */; };
+		5BF858282A532BD60022052F /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF858272A532BD60022052F /* PlayerManager.swift */; };
+		5BF8582C2A53317E0022052F /* TransferPlayersDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8582B2A53317E0022052F /* TransferPlayersDataProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,7 @@
 		5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
 		5BA59CCE2A31D33B00E567C3 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsViewController.swift; sourceTree = "<group>"; };
+		5BC4D7742A51815F00A9310F /* AddPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerViewController.swift; sourceTree = "<group>"; };
 		5BCB80E62A2BE48000F37023 /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPlayersViewController.swift; sourceTree = "<group>"; };
 		5BCB80EC2A2BF6F900F37023 /* Extension + UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImage.swift"; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 		5BD6D6922A2A817000657672 /* LightLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeagueViewController.swift; sourceTree = "<group>"; };
 		5BD6D6942A2A83E600657672 /* PreloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadViewController.swift; sourceTree = "<group>"; };
 		5BF730142A326D5A001D7880 /* DetailProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
+		5BF858272A532BD60022052F /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
+		5BF8582B2A53317E0022052F /* TransferPlayersDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPlayersDataProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 			children = (
 				5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */,
 				5BF730142A326D5A001D7880 /* DetailProfileViewController.swift */,
+				5BC4D7742A51815F00A9310F /* AddPlayerViewController.swift */,
 			);
 			path = Players;
 			sourceTree = "<group>";
@@ -102,6 +109,7 @@
 				5BCB80E62A2BE48000F37023 /* Players.swift */,
 				5BCB80F22A2BFBF800F37023 /* CellsID.swift */,
 				5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */,
+				5BF858272A532BD60022052F /* PlayerManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +147,7 @@
 				5BCB80E52A2BE45400F37023 /* Model */,
 				5BCB80F02A2BFB1200F37023 /* Cell */,
 				5BD6D68F2A2A7FB400657672 /* Extensions */,
+				5BF8582A2A5331530022052F /* Helper */,
 				5BD6D6822A2A7F4C00657672 /* Assets.xcassets */,
 				5BD6D6842A2A7F4C00657672 /* LaunchScreen.storyboard */,
 				5BD6D6872A2A7F4C00657672 /* Info.plist */,
@@ -173,6 +182,14 @@
 				5BCB80EC2A2BF6F900F37023 /* Extension + UIImage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5BF8582A2A5331530022052F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5BF8582B2A53317E0022052F /* TransferPlayersDataProtocol.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,9 +272,12 @@
 				5BA59CCF2A31D33B00E567C3 /* RatingViewController.swift in Sources */,
 				5B0D6EB02A2D3B5000C129E0 /* Rules.swift in Sources */,
 				5BD6D6932A2A817000657672 /* LightLeagueViewController.swift in Sources */,
+				5BF8582C2A53317E0022052F /* TransferPlayersDataProtocol.swift in Sources */,
+				5BC4D7752A51815F00A9310F /* AddPlayerViewController.swift in Sources */,
 				5BCB80E72A2BE48000F37023 /* Players.swift in Sources */,
 				5BA59CD12A31D3C100E567C3 /* TournamentsViewController.swift in Sources */,
 				5BD6D67A2A2A7F4B00657672 /* AppDelegate.swift in Sources */,
+				5BF858282A532BD60022052F /* PlayerManager.swift in Sources */,
 				5BCB80F32A2BFBF800F37023 /* CellsID.swift in Sources */,
 				5BD6D6912A2A809900657672 /* Extension + PreloadViewController.swift in Sources */,
 				5BD6D67C2A2A7F4B00657672 /* SceneDelegate.swift in Sources */,

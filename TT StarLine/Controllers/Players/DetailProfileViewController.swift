@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailProfileViewController: UIViewController {
+final class DetailProfileViewController: UIViewController {
 
     var player: Player!
 
@@ -35,7 +35,7 @@ class DetailProfileViewController: UIViewController {
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(player.firstName) \(player.lastName)"
+        label.text = "\(player.lastName) \(player.firstName)"
         label.numberOfLines = 0
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = .label
@@ -96,8 +96,6 @@ class DetailProfileViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
 
         let dismissButton = UIBarButtonItem(title: "Закрыть", style: .plain, target: self, action: #selector(dismissButtonTapped))
-        dismissButton.tintColor = .systemBlue
-
         navigationItem.leftBarButtonItem = dismissButton
     }
 

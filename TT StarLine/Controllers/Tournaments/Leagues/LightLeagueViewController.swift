@@ -39,7 +39,7 @@ class LightLeagueViewController: UIViewController {
         button.layer.cornerRadius = 30
         button.clipsToBounds = true
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(addPlayer), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(addPlayer), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -95,9 +95,9 @@ class LightLeagueViewController: UIViewController {
         ])
     }
     
-    @objc func addPlayer() {
-        let vc = ListOfPlayersViewController()
-        vc.navigationItem.title = "List of players Light league"
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    @objc func addPlayer() {
+//        let vc = ListOfPlayersViewController()
+//        vc.navigationItem.title = "List of players Light league"
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
 }

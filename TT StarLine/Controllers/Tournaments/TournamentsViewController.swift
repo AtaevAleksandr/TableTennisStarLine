@@ -33,7 +33,7 @@ class TournamentsViewController: UIViewController {
         if traitCollection.userInterfaceStyle == .light {
             view.alpha = 0.1
         } else if traitCollection.userInterfaceStyle == .dark {
-            view.alpha = 0.3
+            view.alpha = 0.2
         }
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

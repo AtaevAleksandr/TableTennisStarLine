@@ -7,10 +7,7 @@
 
 import UIKit
 
-class ListOfPlayersViewController: UIViewController {
-
-    var players = Player.players
-    lazy var sortedPlayers = players.sorted { $0.league.rawValue < $1.league.rawValue }
+final class ListOfPlayersViewController: UIViewController, TransferPlayersDataDelegate {
 
     //MARK: - View lifecycle
     override func viewDidLoad() {
@@ -34,13 +31,13 @@ class ListOfPlayersViewController: UIViewController {
         if traitCollection.userInterfaceStyle == .light {
             view.alpha = 0.1
         } else if traitCollection.userInterfaceStyle == .dark {
-            view.alpha = 0.3
+            view.alpha = 0.2
         }
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.backgroundView = self.backView
@@ -65,6 +62,9 @@ class ListOfPlayersViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.prefersLargeTitles = true
 
+        let addPlayerButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPlayer))
+        navigationItem.rightBarButtonItem = addPlayerButton
+
         let tabAppearance = UITabBarAppearance()
         tabAppearance.backgroundColor = .tertiarySystemBackground
         tabBarController?.tabBar.standardAppearance = tabAppearance
@@ -88,25 +88,39 @@ class ListOfPlayersViewController: UIViewController {
             backView.heightAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
+
+    @objc func addPlayer() {
+        let vc = AddPlayerViewController()
+        vc.delegate = self
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
+    }
+
+    func didAdd(the player: Player) {
+        PlayerManager.shared.addPlayer(player)
+        tableView.reloadData()
+    }
 }
 
+//MARK: - Extensions
 extension ListOfPlayersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return players.count
+        return PlayerManager.shared.players.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.listOfPlayersTableViewCell, for: indexPath) as! ListOfPlayersTableViewCell
-        cell.configure(with: sortedPlayers[indexPath.row])
+        let player = PlayerManager.shared.players[indexPath.row]
+        cell.configure(with: player)
         return cell
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let playerCell = cell as? ListOfPlayersTableViewCell else { return }
 
-        let selectedPlayers = sortedPlayers[indexPath.row]
+        let selectedPlayer = PlayerManager.shared.players[indexPath.row]
 
-        if selectedPlayers.league == .hard {
+        if selectedPlayer.league == .hard {
             playerCell.leagueLabel.textColor = .systemRed
         } else {
             playerCell.leagueLabel.textColor = .systemGreen
@@ -118,7 +132,7 @@ extension ListOfPlayersViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = DetailProfileViewController()
-        let selectedPlayers = sortedPlayers[indexPath.row]
+        let selectedPlayers = PlayerManager.shared.players[indexPath.row]
         vc.player = selectedPlayers
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)
@@ -128,10 +142,16 @@ extension ListOfPlayersViewController: UITableViewDelegate, UITableViewDataSourc
         150
     }
 
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.players.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            PlayerManager.shared.players.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
         }
     }
 }

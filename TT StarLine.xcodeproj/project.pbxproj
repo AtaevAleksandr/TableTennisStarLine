@@ -11,6 +11,7 @@
 		5B0D6EB02A2D3B5000C129E0 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */; };
 		5BA59CCF2A31D33B00E567C3 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59CCE2A31D33B00E567C3 /* RatingViewController.swift */; };
 		5BA59CD12A31D3C100E567C3 /* TournamentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */; };
+		5BB7ACC02A5C9F800075D80F /* TournamentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7ACBF2A5C9F800075D80F /* TournamentTableViewCell.swift */; };
 		5BC4D7752A51815F00A9310F /* AddPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4D7742A51815F00A9310F /* AddPlayerViewController.swift */; };
 		5BCB80E72A2BE48000F37023 /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80E62A2BE48000F37023 /* Players.swift */; };
 		5BCB80EB2A2BEB2900F37023 /* ListOfPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */; };
@@ -19,15 +20,16 @@
 		5BCB80F32A2BFBF800F37023 /* CellsID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB80F22A2BFBF800F37023 /* CellsID.swift */; };
 		5BD6D67A2A2A7F4B00657672 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6792A2A7F4B00657672 /* AppDelegate.swift */; };
 		5BD6D67C2A2A7F4B00657672 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D67B2A2A7F4B00657672 /* SceneDelegate.swift */; };
-		5BD6D67E2A2A7F4B00657672 /* HardLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D67D2A2A7F4B00657672 /* HardLeagueViewController.swift */; };
 		5BD6D6832A2A7F4C00657672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD6D6822A2A7F4C00657672 /* Assets.xcassets */; };
 		5BD6D6862A2A7F4C00657672 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD6D6842A2A7F4C00657672 /* LaunchScreen.storyboard */; };
 		5BD6D6912A2A809900657672 /* Extension + PreloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6902A2A809900657672 /* Extension + PreloadViewController.swift */; };
-		5BD6D6932A2A817000657672 /* LightLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6922A2A817000657672 /* LightLeagueViewController.swift */; };
 		5BD6D6952A2A83E600657672 /* PreloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6D6942A2A83E600657672 /* PreloadViewController.swift */; };
+		5BE748232A6151D50082EFE6 /* Tournaments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE748222A6151D50082EFE6 /* Tournaments.swift */; };
+		5BE748252A6160ED0082EFE6 /* AddTournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE748242A6160ED0082EFE6 /* AddTournamentViewController.swift */; };
+		5BE748272A6166680082EFE6 /* TransferTournamentsDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE748262A6166680082EFE6 /* TransferTournamentsDataDelegate.swift */; };
 		5BF730152A326D5A001D7880 /* DetailProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF730142A326D5A001D7880 /* DetailProfileViewController.swift */; };
 		5BF858282A532BD60022052F /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF858272A532BD60022052F /* PlayerManager.swift */; };
-		5BF8582C2A53317E0022052F /* TransferPlayersDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8582B2A53317E0022052F /* TransferPlayersDataProtocol.swift */; };
+		5BF8582C2A53317E0022052F /* TransferPlayersDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8582B2A53317E0022052F /* TransferPlayersDataDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,7 @@
 		5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
 		5BA59CCE2A31D33B00E567C3 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsViewController.swift; sourceTree = "<group>"; };
+		5BB7ACBF2A5C9F800075D80F /* TournamentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableViewCell.swift; sourceTree = "<group>"; };
 		5BC4D7742A51815F00A9310F /* AddPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerViewController.swift; sourceTree = "<group>"; };
 		5BCB80E62A2BE48000F37023 /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		5BCB80EA2A2BEB2900F37023 /* ListOfPlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPlayersViewController.swift; sourceTree = "<group>"; };
@@ -44,16 +47,17 @@
 		5BD6D6762A2A7F4B00657672 /* TT StarLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TT StarLine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD6D6792A2A7F4B00657672 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BD6D67B2A2A7F4B00657672 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5BD6D67D2A2A7F4B00657672 /* HardLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardLeagueViewController.swift; sourceTree = "<group>"; };
 		5BD6D6822A2A7F4C00657672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BD6D6852A2A7F4C00657672 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BD6D6872A2A7F4C00657672 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BD6D6902A2A809900657672 /* Extension + PreloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + PreloadViewController.swift"; sourceTree = "<group>"; };
-		5BD6D6922A2A817000657672 /* LightLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeagueViewController.swift; sourceTree = "<group>"; };
 		5BD6D6942A2A83E600657672 /* PreloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadViewController.swift; sourceTree = "<group>"; };
+		5BE748222A6151D50082EFE6 /* Tournaments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournaments.swift; sourceTree = "<group>"; };
+		5BE748242A6160ED0082EFE6 /* AddTournamentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTournamentViewController.swift; sourceTree = "<group>"; };
+		5BE748262A6166680082EFE6 /* TransferTournamentsDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferTournamentsDataDelegate.swift; sourceTree = "<group>"; };
 		5BF730142A326D5A001D7880 /* DetailProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileViewController.swift; sourceTree = "<group>"; };
 		5BF858272A532BD60022052F /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
-		5BF8582B2A53317E0022052F /* TransferPlayersDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPlayersDataProtocol.swift; sourceTree = "<group>"; };
+		5BF8582B2A53317E0022052F /* TransferPlayersDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPlayersDataDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B66E9A52A58016100A6DE82 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5BD6D6822A2A7F4C00657672 /* Assets.xcassets */,
+				5BD6D6842A2A7F4C00657672 /* LaunchScreen.storyboard */,
+				5BD6D6872A2A7F4C00657672 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5BA59CCA2A31D1F200E567C3 /* Players */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,18 +103,17 @@
 			isa = PBXGroup;
 			children = (
 				5BA59CD02A31D3C100E567C3 /* TournamentsViewController.swift */,
-				5BA59CCD2A31D25200E567C3 /* Leagues */,
+				5BE748242A6160ED0082EFE6 /* AddTournamentViewController.swift */,
 			);
 			path = Tournaments;
 			sourceTree = "<group>";
 		};
-		5BA59CCD2A31D25200E567C3 /* Leagues */ = {
+		5BB7ACC12A5C9FB50075D80F /* PreloadWindow */ = {
 			isa = PBXGroup;
 			children = (
-				5BD6D67D2A2A7F4B00657672 /* HardLeagueViewController.swift */,
-				5BD6D6922A2A817000657672 /* LightLeagueViewController.swift */,
+				5BD6D6942A2A83E600657672 /* PreloadViewController.swift */,
 			);
-			path = Leagues;
+			path = PreloadWindow;
 			sourceTree = "<group>";
 		};
 		5BCB80E52A2BE45400F37023 /* Model */ = {
@@ -110,17 +123,19 @@
 				5BCB80F22A2BFBF800F37023 /* CellsID.swift */,
 				5B0D6EAF2A2D3B5000C129E0 /* Rules.swift */,
 				5BF858272A532BD60022052F /* PlayerManager.swift */,
+				5BE748222A6151D50082EFE6 /* Tournaments.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5BCB80F02A2BFB1200F37023 /* Cell */ = {
+		5BCB80F02A2BFB1200F37023 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				5BCB80EE2A2BFAE700F37023 /* ListOfPlayersTableViewCell.swift */,
 				5B02282A2A3F8E4900DBE3E4 /* RatingTableViewCell.swift */,
+				5BB7ACBF2A5C9F800075D80F /* TournamentTableViewCell.swift */,
 			);
-			path = Cell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		5BD6D66D2A2A7F4B00657672 = {
@@ -145,12 +160,10 @@
 				5BD6D68D2A2A7F9900657672 /* App */,
 				5BD6D68E2A2A7FA600657672 /* Controllers */,
 				5BCB80E52A2BE45400F37023 /* Model */,
-				5BCB80F02A2BFB1200F37023 /* Cell */,
+				5BCB80F02A2BFB1200F37023 /* Cells */,
 				5BD6D68F2A2A7FB400657672 /* Extensions */,
 				5BF8582A2A5331530022052F /* Helper */,
-				5BD6D6822A2A7F4C00657672 /* Assets.xcassets */,
-				5BD6D6842A2A7F4C00657672 /* LaunchScreen.storyboard */,
-				5BD6D6872A2A7F4C00657672 /* Info.plist */,
+				5B66E9A52A58016100A6DE82 /* Resources */,
 			);
 			path = "TT StarLine";
 			sourceTree = "<group>";
@@ -167,7 +180,7 @@
 		5BD6D68E2A2A7FA600657672 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5BD6D6942A2A83E600657672 /* PreloadViewController.swift */,
+				5BB7ACC12A5C9FB50075D80F /* PreloadWindow */,
 				5BA59CCA2A31D1F200E567C3 /* Players */,
 				5BA59CCB2A31D1FE00E567C3 /* Rating */,
 				5BA59CCC2A31D20C00E567C3 /* Tournaments */,
@@ -187,7 +200,8 @@
 		5BF8582A2A5331530022052F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				5BF8582B2A53317E0022052F /* TransferPlayersDataProtocol.swift */,
+				5BF8582B2A53317E0022052F /* TransferPlayersDataDelegate.swift */,
+				5BE748262A6166680082EFE6 /* TransferTournamentsDataDelegate.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -262,17 +276,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE748232A6151D50082EFE6 /* Tournaments.swift in Sources */,
+				5BB7ACC02A5C9F800075D80F /* TournamentTableViewCell.swift in Sources */,
 				5BF730152A326D5A001D7880 /* DetailProfileViewController.swift in Sources */,
+				5BE748272A6166680082EFE6 /* TransferTournamentsDataDelegate.swift in Sources */,
 				5BCB80ED2A2BF6F900F37023 /* Extension + UIImage.swift in Sources */,
 				5BD6D6952A2A83E600657672 /* PreloadViewController.swift in Sources */,
 				5BCB80EF2A2BFAE700F37023 /* ListOfPlayersTableViewCell.swift in Sources */,
 				5BCB80EB2A2BEB2900F37023 /* ListOfPlayersViewController.swift in Sources */,
-				5BD6D67E2A2A7F4B00657672 /* HardLeagueViewController.swift in Sources */,
 				5B02282B2A3F8E4900DBE3E4 /* RatingTableViewCell.swift in Sources */,
 				5BA59CCF2A31D33B00E567C3 /* RatingViewController.swift in Sources */,
 				5B0D6EB02A2D3B5000C129E0 /* Rules.swift in Sources */,
-				5BD6D6932A2A817000657672 /* LightLeagueViewController.swift in Sources */,
-				5BF8582C2A53317E0022052F /* TransferPlayersDataProtocol.swift in Sources */,
+				5BF8582C2A53317E0022052F /* TransferPlayersDataDelegate.swift in Sources */,
+				5BE748252A6160ED0082EFE6 /* AddTournamentViewController.swift in Sources */,
 				5BC4D7752A51815F00A9310F /* AddPlayerViewController.swift in Sources */,
 				5BCB80E72A2BE48000F37023 /* Players.swift in Sources */,
 				5BA59CD12A31D3C100E567C3 /* TournamentsViewController.swift in Sources */,
@@ -421,7 +437,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 695W8CRMKH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TT StarLine/Info.plist";
+				INFOPLIST_FILE = "TT StarLine/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -453,7 +469,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 695W8CRMKH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TT StarLine/Info.plist";
+				INFOPLIST_FILE = "TT StarLine/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

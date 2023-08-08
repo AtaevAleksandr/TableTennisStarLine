@@ -43,7 +43,7 @@ final class ListOfPlayersViewController: UIViewController, TransferPlayersDataDe
         tableView.backgroundView = self.backView
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorInset = .init(top: 0, left: 156, bottom: 0, right: 0)
+        tableView.separatorInset = .init(top: 0, left: 132, bottom: 0, right: 0)
         tableView.separatorColor = .tertiaryLabel
         tableView.register(ListOfPlayersTableViewCell.self, forCellReuseIdentifier: Cell.listOfPlayersTableViewCell)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +105,7 @@ final class ListOfPlayersViewController: UIViewController, TransferPlayersDataDe
 //MARK: - Extensions
 extension ListOfPlayersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PlayerManager.shared.players.count
+        PlayerManager.shared.players.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,7 +139,7 @@ extension ListOfPlayersViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        100
     }
 
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

@@ -28,7 +28,12 @@ final class DetailProfileViewController: UIViewController {
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: player.avatar.rawValue)
+        if player.avatar == .unknown {
+            imageView.image = GenderAvatar.unknown.image
+            imageView.tintColor = .lightGray
+        } else {
+            imageView.image = UIImage(named: player.avatar.rawValue)
+        }
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

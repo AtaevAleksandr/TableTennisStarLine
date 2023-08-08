@@ -10,4 +10,5 @@ import Foundation
 struct Cell {
     static let listOfPlayersTableViewCell = "ListOfPlayersTableViewController"
     static let ratingTableViewCell = "RatingTableViewCell"
+    static let tournamentTableViewCell = "TournamentTableViewCell"
 }

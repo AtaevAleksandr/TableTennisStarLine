@@ -66,7 +66,7 @@ final class RatingViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
-        tableView.separatorInset = .init(top: 0, left: 86, bottom: 0, right: 0)
+        tableView.separatorInset = .init(top: 0, left: 112, bottom: 0, right: 0)
         tableView.separatorColor = .tertiaryLabel
         tableView.register(RatingTableViewCell.self, forCellReuseIdentifier: Cell.ratingTableViewCell)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +83,6 @@ final class RatingViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.prefersLargeTitles = true
 
         let tabAppearance = UITabBarAppearance()
         tabAppearance.backgroundColor = .tertiarySystemBackground

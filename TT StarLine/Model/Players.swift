@@ -6,19 +6,28 @@
 //
 
 import Foundation
+import UIKit
 
 enum LeagueType: String, CaseIterable {
+    case unknown = "Не выбрана"
     case light = "Лайт"
     case hard = "Хард"
 }
 
 enum GenderAvatar: String, CaseIterable {
+    case unknown = "Не выбран"
     case male = "Мужской"
     case female = "Женский"
+
+    var image: UIImage? {
+        if self == .unknown {
+            return UIImage(systemName: "person.circle")
+        }
+        return nil
+    }
 }
 
 struct Player: Equatable {
-
     var avatar: GenderAvatar
     var age: Int
     var lastName: String

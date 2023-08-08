@@ -1,5 +1,5 @@
 //
-//  TransferPlayersDataProtocol.swift
+//  TransferPlayersDataDelegate.swift
 //  TT StarLine
 //
 //  Created by Aleksandr Ataev on 03.07.2023.

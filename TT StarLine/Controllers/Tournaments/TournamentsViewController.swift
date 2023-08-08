@@ -7,9 +7,9 @@
 
 import UIKit
 
-class TournamentsViewController: UIViewController {
+class TournamentsViewController: UIViewController, TransferTournamentsDataDelegate {
 
-    var players = Player.players
+    var tournaments = Tournament.tournaments
 
     //MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class TournamentsViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorInset = .zero
         tableView.separatorColor = .tertiaryLabel
-        tableView.register(ListOfPlayersTableViewCell.self, forCellReuseIdentifier: Cell.listOfPlayersTableViewCell)
+        tableView.register(TournamentTableViewCell.self, forCellReuseIdentifier: Cell.tournamentTableViewCell)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -63,6 +63,9 @@ class TournamentsViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.prefersLargeTitles = true
+
+        let addTournamentButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTournament))
+        navigationItem.rightBarButtonItem = addTournamentButton
 
         let tabAppearance = UITabBarAppearance()
         tabAppearance.backgroundColor = .tertiarySystemBackground
@@ -87,15 +90,29 @@ class TournamentsViewController: UIViewController {
             backView.heightAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
+
+    @objc func addTournament() {
+        let vc = AddTournamentViewController()
+        vc.delegate = self
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
+    }
+
+    func didAdd(the tournament: Tournament) {
+        tournaments.append(tournament)
+        tableView.reloadData()
+    }
 }
 
 extension TournamentsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        tournaments.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.listOfPlayersTableViewCell, for: indexPath) as! ListOfPlayersTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.tournamentTableViewCell, for: indexPath) as! TournamentTableViewCell
+        let tournament = tournaments[indexPath.row]
+        cell.configure(with: tournament)
         return cell
     }
 
@@ -108,13 +125,19 @@ extension TournamentsViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        70
+    }
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.players.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tournaments.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
         }
     }
 }

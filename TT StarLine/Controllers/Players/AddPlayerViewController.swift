@@ -40,13 +40,9 @@ final class AddPlayerViewController: UIViewController {
 
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "photo")
-        imageView.tintColor = .label
-        imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = UIColor.label.cgColor
+        imageView.image = UIImage(systemName: "person.circle")
+        imageView.tintColor = .lightGray
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 80
-        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -114,6 +110,7 @@ final class AddPlayerViewController: UIViewController {
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         setKeyboardSettings(forUITextField: textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.inputView = self.genderPickerView
@@ -138,6 +135,7 @@ final class AddPlayerViewController: UIViewController {
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         setKeyboardSettings(forUITextField: textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.inputView = self.leaguePickerView
@@ -163,6 +161,7 @@ final class AddPlayerViewController: UIViewController {
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         setKeyboardSettings(forUITextField: textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -179,6 +178,7 @@ final class AddPlayerViewController: UIViewController {
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         setKeyboardSettings(forUITextField: textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -196,6 +196,7 @@ final class AddPlayerViewController: UIViewController {
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.label.cgColor
         textField.layer.borderWidth = 1
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -290,10 +291,21 @@ final class AddPlayerViewController: UIViewController {
     }
 
     @objc func textFieldDidChange() {
+        updateSaveButtonState()
+    }
+
+    func updateSaveButtonState() {
         let firstNameText = firstNameTextField.text ?? ""
         let lastNameText = lastNameTextField.text ?? ""
         let ageText = ageTextField.text ?? ""
-        saveButton.isEnabled = !firstNameText.isEmpty && !lastNameText.isEmpty && !ageText.isEmpty
+        let genderText = genderTextField.text ?? ""
+        let leagueText = leagueTextField.text ?? ""
+        let ratingText = ratingTextField.text ?? ""
+        let manufactureText = manufactureTextField.text ?? ""
+        let contactText = contactTextField.text ?? ""
+
+        saveButton.isEnabled = ![firstNameText, lastNameText, ageText, genderText, leagueText, ratingText,
+                                 manufactureText, contactText].contains { $0.isEmpty }
     }
 
     private func setKeyboardSettings(forUITextField textField: UITextField) {
@@ -310,12 +322,12 @@ final class AddPlayerViewController: UIViewController {
     }
 
     @objc func saveButtonTapped() {
-        if let avatar = GenderAvatar(rawValue: genderTextField.text ?? "Мужской"),
+        if let avatar = GenderAvatar(rawValue: genderTextField.text ?? "Не выбран"),
            let firsName = firstNameTextField.text,
            let lastName = lastNameTextField.text,
-           let age = Int(ageTextField.text ?? ""),
-           let league = LeagueType(rawValue: leagueTextField.text ?? "Лайт"),
-           let rating = Int(ratingTextField.text ?? ""),
+           let age = Int(ageTextField.text ?? "0"),
+           let league = LeagueType(rawValue: leagueTextField.text ?? "Не выбрана"),
+           let rating = Int(ratingTextField.text ?? "0"),
            let manufacture = manufactureTextField.text,
            let contact = contactTextField.text {
             let player = Player(avatar: avatar, age: age, lastName: lastName, firstName: firsName, manufacture: manufacture, contactData: contact, league: league, rating: rating)
@@ -363,8 +375,11 @@ extension AddPlayerViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         default:
             let gender = GenderAvatar.allCases[row]
             genderTextField.text = gender.rawValue
-            avatarImageView.image = UIImage(named: genderTextField.text ?? "Мужской")
-            avatarImageView.layer.borderWidth = 0
+            if gender == GenderAvatar.unknown {
+                avatarImageView.image = gender.image
+            } else {
+                avatarImageView.image = UIImage(named: genderTextField.text ?? "Не выбран")
+            }
         }
     }
 }

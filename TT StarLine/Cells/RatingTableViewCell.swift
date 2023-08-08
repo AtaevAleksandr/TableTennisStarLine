@@ -24,8 +24,6 @@ class RatingTableViewCell: UITableViewCell {
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 35
-        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -53,13 +51,13 @@ class RatingTableViewCell: UITableViewCell {
     }
 
     private func setConstraints() {
-        let margin: CGFloat = 8
+        let margin: CGFloat = 16
 
         NSLayoutConstraint.activate([
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
             avatarImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 70),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 70),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 80),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 80),
 
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: margin),
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: margin),
@@ -70,7 +68,12 @@ class RatingTableViewCell: UITableViewCell {
     }
 
     func configure(with player: Player) {
-        avatarImageView.image = UIImage(named: player.avatar.rawValue)
+        if player.avatar == .unknown  {
+            avatarImageView.image = GenderAvatar.unknown.image
+            avatarImageView.tintColor = .lightGray
+        } else {
+            avatarImageView.image = UIImage(named: player.avatar.rawValue)
+        }
         nameLabel.text = "\(player.firstName) \(player.lastName)"
         ratingLabel.text = "Рейтинг: \(player.rating)"
     }
